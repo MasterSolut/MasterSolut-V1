@@ -1,0 +1,29 @@
+Options +FollowSymLinks
+RewriteEngine On
+RewriteCond %{HTTP_HOST} example.com$ [NC]
+RewriteCond %{HTTP_HOST} !folder1
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d 
+
+RewriteRule ^accueil$ index.php [L]   
+
+#RewriteRule ^index\.html$ index.php [L]
+
+RewriteRule ^([a-z0-9\-]+)-([0-9]+)\.html$    index.php?page=$1&idmenu=$2 [L]
+
+RewriteRule ^contact$ index.php?page=contact [L] 
+
+#RewriteRule ^nous-contacter\.html$    index.php?page=contact [L]
+
+RewriteRule ^commande-([a-z0-9\-]+)\.html$    index.php?page=contact&edition=$1 [L]
+ 
+RewriteRule ^([a-z0-9\-]+)-([0-9]+)-([a-z0-9\-]+)-([0-9]+)-([0-9]+)-([a-z0-9\-]+)\.html$    index.php?page=$1&idmenu=$2&idsmenu=$4&idFormule=$5 [L]
+ 
+
+#RewriteRule ^([a-z0-9\-]+)-pagination-([0-9]+)-([0-9]+)\.html$    index.php?page=$1&idmenu=$3&i=$2 [L]
+
+RewriteRule ^([a-z0-9\-]+)-([0-9]+)-([0-9]+)-([a-z0-9\-]+)\.html$  index.php?page=$1&idmenu=$2&idsmenu=$3 [L] 
+
+
+  
